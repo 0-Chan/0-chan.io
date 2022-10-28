@@ -13,33 +13,33 @@ module.exports = withNextra({
   redirects: () => {
     return [
       {
-        source: "/knowldege",
-        destination: "/knowldege/getting-started",
+        source: "/docs",
+        destination: "/docs/getting-started",
         statusCode: 301,
       },
       {
         source: "/advanced/performance",
-        destination: "/knowldege/advanced/performance",
+        destination: "/docs/advanced/performance",
         statusCode: 301,
       },
       {
         source: "/advanced/cache",
-        destination: "/knowldege/advanced/cache",
+        destination: "/docs/advanced/cache",
         statusCode: 301,
       },
       {
-        source: "/knowldege/cache",
-        destination: "/knowldege/advanced/cache",
+        source: "/docs/cache",
+        destination: "/docs/advanced/cache",
         statusCode: 301,
       },
       {
-        source: "/knowldege/options",
-        destination: "/knowldege/api",
+        source: "/docs/options",
+        destination: "/docs/api",
         statusCode: 301
       },
       {
         source: "/change-log",
-        destination: "/knowldege/change-log",
+        destination: "/docs/change-log",
         statusCode: 301,
       },
       {
@@ -48,13 +48,13 @@ module.exports = withNextra({
         statusCode: 301,
       },
       {
-        source: "/knowldege",
-        destination: "/knowldege/getting-started",
+        source: "/docs",
+        destination: "/docs/getting-started",
         statusCode: 302,
       },
       {
-        source: "/retrospective",
-        destination: "/retrospective/rule",
+        source: "/examples",
+        destination: "/examples/basic",
         statusCode: 302,
       },
     ];

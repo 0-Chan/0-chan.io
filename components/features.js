@@ -9,14 +9,9 @@ const Feature = ({ text, icon }) => (
   </div>
 );
 
-const TITLE_WITH_TRANSLATIONS = {
-  "en-US": "React Hooks for Data Fetching",
-  "es-ES": "Biblioteca React Hooks para la obtención de datos",
-  "zh-CN": "用于数据请求的 React Hooks 库",
-  "pt-BR": " React Hooks para Data Fetching",
-  ja: "データ取得のための React Hooks ライブラリ",
-  ko: "데이터 가져오기를 위한 React Hooks",
-  ru: "React хуки для выборки данных",
+const TITLE = {
+  "en-US": {},
+  ko: "Web Front-end Developer - 김영찬",
 };
 
 // Transaltions for Features
@@ -31,38 +26,15 @@ const FEATURES_WITH_TRANSLATIONS = {
     typescript: "TypeScript Ready",
     remoteLocal: "Remote + Local",
   },
-  "es-ES": {},
-  "zh-CN": {
-    lightweight: "Lightweight",
-    realtime: "Realtime",
-    suspense: "Suspense",
-    pagination: "Pagination",
-    backendAgnostic: "Backend Agnostic",
-    renderingStrategies: "SSR / SSG Ready",
-    typescript: "TypeScript Ready",
-    remoteLocal: "Remote + Local",
-  },
-  "pt-BR": {
-    lightweight: "Leve",
-    realtime: "Tempo-real",
-    suspense: "Suspense",
-    pagination: "Paginação",
-    backendAgnostic: "Backend Agnóstico",
-    renderingStrategies: "Pronto para SSR / SSG",
-    typescript: "Pronto para TypeScript",
-    remoteLocal: "Remoto + Local",
-  },
-  ja: {},
-  ko: {},
-  ru: {
-    lightweight: "Лёгкий",
-    realtime: "В реальном времени",
-    suspense: "Задержка",
-    pagination: "Пагинация",
-    backendAgnostic: "Бэкэнд-независимый",
-    renderingStrategies: "SSR / SSG",
-    typescript: "TypeScript",
-    remoteLocal: "Удалённо + Локально",
+  ko: {
+    lightweight: "HTML5 / CSS3",
+    realtime: "ES6+ JavaScript",
+    suspense: "React",
+    pagination: "Next.js",
+    backendAgnostic: "TailwindCSS",
+    renderingStrategies: "Jest",
+    typescript: "Redux",
+    remoteLocal: "Emotion",
   },
 };
 
@@ -76,7 +48,7 @@ export default () => {
   return (
     <div className="mx-auto max-w-full w-[880px] text-center px-4 mb-10">
       <p className="text-lg mb-2 text-gray-600 md:!text-2xl">
-        {TITLE_WITH_TRANSLATIONS[locale]}
+        {TITLE[locale]}
       </p>
       <div className={styles.features}>
         <Feature

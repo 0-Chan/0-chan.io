@@ -21,6 +21,11 @@ const Logo = ({ height }) => (
   </svg>
 );
 
+const TITLE_WITH_TRANSLATIONS = {
+  "en-US": "0-Chan's blog",
+  ko: "📜 개발 지식 관리 블로그",
+};
+
 export default {
   projectLink: "https://github.com/0-chan",
   docsRepositoryBase: "https://github.com/0-Chan/0-Chan.github.io",
@@ -70,6 +75,12 @@ export default {
           type="image/png"
           sizes="16x16"
           href="/favicon/favicon-16x16.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="./favicon/favicon/favicon-32x32.png"
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link

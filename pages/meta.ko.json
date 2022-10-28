@@ -4,19 +4,19 @@
     "type": "page",
     "hidden": true
   },
-  "docs": {
-    "title": "문서",
-    "type": "page"
-  },
-  "examples": {
-    "title": "예시",
-    "type": "page"
-  },
   "blog": {
-    "title": "블로그",
+    "title": "포트폴리오",
     "type": "page",
     "theme": {
       "sidebar": false
     }
+  },
+  "knowldege": {
+    "title": "지식망",
+    "type": "page"
+  },
+  "retrospective": {
+    "title": "회고",
+    "type": "page"
   }
 }
