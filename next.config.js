@@ -14,7 +14,7 @@ module.exports = withNextra({
     return [
       {
         source: "/knowldege",
-        destination: "/knowldege/getting-started",
+        destination: "/knowldege/layout",
         statusCode: 301,
       },
       {
@@ -49,7 +49,7 @@ module.exports = withNextra({
       },
       {
         source: "/knowldege",
-        destination: "/knowldege/getting-started",
+        destination: "/knowldege/layout",
         statusCode: 302,
       },
       {
