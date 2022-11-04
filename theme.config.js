@@ -23,7 +23,7 @@ const Logo = ({ height }) => (
 
 export default {
   projectLink: "https://github.com/0-chan",
-  docsRepositoryBase: "https://github.com/0-Chan/0-Chan.github.io",
+  docsRepositoryBase: "https://github.com/0-Chan/chan-blog",
   titleSuffix: " – 0-Chan",
   search: true,
   unstable_flexsearch: true,
