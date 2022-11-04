@@ -54,7 +54,7 @@ module.exports = withNextra({
       },
       {
         source: "/retrospective",
-        destination: "/retrospective/rule",
+        destination: "/retrospective/0",
         statusCode: 302,
       },
     ];

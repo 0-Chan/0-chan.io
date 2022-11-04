@@ -1,8 +1,4 @@
 {
-  "rule": "회고 규칙",
-  "basic": "기본 사용법",
-  "auth": "인증",
-  "infinite-loading": "인피니트 로딩",
-  "error-handling": "에러 처리",
-  "ssr": "Next.js SSR"
+  "0": "회고 방법",
+  "20221103": "책 리뷰 방식 / 11.03"
 }
