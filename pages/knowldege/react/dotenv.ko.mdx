@@ -1,12 +1,10 @@
----
-title: dotenv
----
+# dotenv
 ## 1. dotenv 사용처
-소스코드에 API 키를 포함할 경우가 있습니다. 코드가 local이나 private repo에 있다면 괜찮지만,  
-public repo 처럼 불특정 다수에 공개된다면 문제가 됩니다.  
+소스코드에 API 키를 포함할 경우가 있습니다. 코드가 local이나 private repo에 있다면 상관 없습니다.  
+허나 public repo 처럼 불특정 다수에 공개될 때는 문제가 됩니다.  
 실제로 AWS 키가 노출되어 금전적 손실을 입는 경우도 있기 때문입니다.
 
-이에 대한 방지책으로 Github secret가 있습니다만.  
+이에 대한 방지책으로 Github secret가 있지만,  
 Github action과 관련이 없다면 dotenv를 써야합니다.
 
 dotenv는 `.env`에 환경변수를 작성해 활용할 수 있게 해줍니다.  
@@ -39,14 +37,22 @@ c. 루트 경로에 `.env`를 생성합니다
 
 d. `.gitignore`에 이를 추가합니다.
 
-이제 필요한 곳에 바로 환경 변수를 불러와 사용할 수 있습니다.
+이제 필요한 곳에 바로 환경 변수를 불러와 사용할 수 있습니다.  
+ex) `const KEY = process.env.API_KEY;`
 
-### CRA를 썼다면? (사족)
-만약 Create-React-App 같은 보일러 플레이트로 프로젝트를 생성했다면 위 과정이 필요 없습니다.  
+### CRA를 썼다면? (사족1)
+만약 create-react-app 같은 보일러 플레이트로 프로젝트를 생성했다면 위 과정이 필요 없습니다.  
 왜냐면 디펜던시의 `react-script`에 dotenv가 포함 되어 있기 때문이죠.
 
 다만 유념하실 점은 `.env` 키값 접두사로 **REACT_APP_** 를 붙여야만 동작합니다.  
 
+### 왜 dotenv-webpack? (사족2)
+dotenv가 아닌 dotenv-webpack을 쓰는 이유는 React에서 환경변수를 쓰기 위함입니다.
+
+React 코드는 Webpack에서 실행되며, 기본적으로 fs 모듈이나 process는 접근이 안됩니다.  
+따라서 `process.env`는 Webpack 설정을 통해서만 주입할 수 있습니다. 
+
 - - -
 References )  
-ㄱ. [Stackoverflow](https://stackoverflow.com/questions/59243719/setting-up-env-variables-without-create-react-app) dotenv without CRA
+ㄱ. [dotenv-npm](https://www.npmjs.com/package/dotenv)  
+ㄴ. [Stackoverflow](https://stackoverflow.com/questions/59243719/setting-up-env-variables-without-create-react-app) dotenv without CRA
