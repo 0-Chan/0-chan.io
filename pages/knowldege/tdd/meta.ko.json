@@ -1,5 +1,6 @@
 {
   "trial-error": "시행착오",
+  "mock-fetch-calls": "fetch 호출 모킹",
   "image-test": "이미지를 테스트",
   "bdd": "BDD란?"
 }
