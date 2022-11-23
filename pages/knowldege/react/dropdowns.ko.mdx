@@ -1,0 +1,60 @@
+# 드롭다운 구현하기
+## 컴포넌트로 구현
+기존에는 `select` 태그로 드롭다운을 썼었는데요.  
+태그를 쓰는건 간단했지만 사용하다보니 문제점이 있었습니다.
+1. `select` 태그 내에 링크 삽입이 불가능
+2. 디자인 시스템 적용이 힘듬
+
+따라서 드롭다운을 리액트 컴포넌트를 구현 해보았습니다.
+
+드롭다운이 열렸는지 판단 하는게 핵심인데, 이때 `useState()`를 활용할 수 있습니다.  
+```js
+import { useState } from 'react';
+
+export default function Dropdowns({ children }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <button type="button" onClick={() => setOpen(!open)}>
+        클릭하여 드롭다운 펼치기
+      </button>
+      <div>
+        {open && children }
+      </div>
+    </>
+  );
+}
+```
+`button` 태그 내에 보이시는 `onClick` 부분이 중요합니다.  
+클릭이 감지되면 현재 상태 반대로 가기 위해 `setOpen()` 안에 그냥 open을 넣지 않고  
+!(논리 부정 연산자)를 써서 `!open`를 넣어줍니다.  
+
+이후에 있는 div의 `{open && children}`에서는  
+open이 `false` → 무시  
+open이 `true` → props로 받은 children을 보여줌
+
+기본적으로 이와 같은 형태로 드롭다운을 구현하게 됩니다.
+
+## 바깥 클릭으로 접기
+To be written...
+```js
+    const btnRef = useRef();
+  
+    useEffect(() => {
+      const closeDropdowns = (e) => {
+        if (e.path[0] !== btnRef.current) {
+          setOpen(false);
+        }
+      };
+  
+      document.body.addEventListener('click', closeDropdowns);
+  
+      return () => document.body.removeEventListener('click', closeDropdowns);
+    }, []);
+```
+
+- - -
+References)  
+[1] Fireship, "[dotenv](https://www.youtube.com/watch?v=IF6k0uZuypA&list=WL&index=5)" [YouTube, 2020 Apr.] | Accessed: 2022-11-22  
+[2] Coding With Dawid, "[React click outside to close](https://www.youtube.com/watch?v=mwb6zgs9peU)" [YouTube, 2022 Jan.] | Accessed: 2022-11-23  
