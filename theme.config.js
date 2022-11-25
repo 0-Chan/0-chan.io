@@ -28,6 +28,7 @@ export default {
   search: true,
   unstable_flexsearch: true,
   floatTOC: true,
+  defaultMenuCollapsed: true,
   feedbackLabels: "feedback",
   logo: () => {
     const { locale } = useRouter();
