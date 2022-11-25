@@ -9,7 +9,9 @@
     "type": "page",
     "theme": {
       "sidebar": false
-    }
+    },
+    "hidden": true
+
   },
   "knowldege": {
     "title": "지식망",
