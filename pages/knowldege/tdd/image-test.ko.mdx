@@ -1,14 +1,14 @@
 # 이미지를 테스트
 ## Ⅰ. 테스트 대상 2가지
-React에서 이미지를 테스트한다고 할 때, 2가지 대상이 있습니다.  
+이미지를 테스트한다고 할 때, 2가지 대상이 있습니다.  
 ⅰ. 이미지가 존재하는지?  
 ⅱ. attribute 값이 올바른지?
 
 ### ⅰ. 이미지가 존재하는지?
-만약 `import`로 이미지를 불렀는데 파일이 없다면 빌드가 실패하게 됩니다.  
-따라서 이럴때는 이미지 존재 여부를 테스트 하지 않구요.
+만약 `import`로 이미지를 불러오는 경우가 있습니다.  
+이 때 파일의 없거나 정확한 경로 값이 아니라면 빌드 단에서 에러가 납니다.  
 
-[toBeVisible()](https://github.com/testing-library/jest-dom#tobevisible)를 써서 실제 유저에게 보이는지를 테스트합니다.  
+이 외에는 [toBeVisible()](https://github.com/testing-library/jest-dom#tobevisible)를 써서 실제 유저에게 보여지는지 테스트합니다.  
 img element가 `hidden` 속성이나 css 등으로 숨겨질 경우가 있기 때문입니다.  
 ex)
 ```js
@@ -19,7 +19,7 @@ describe('Img', () => {
     expect(getByRole('img')).toBeVisible();
   });
 });
-``` 
+```
 
 ### ⅱ. attribute 값이 올바른지?
 img 속성 값인 `src`나`alt` 값이 올바른지 테스트합니다.  
@@ -34,7 +34,7 @@ describe('Img', () => {
   });
 });
 ```
-이렇게 2가지 테스트 방법으로 이미지를 테스트합니다. 
+이렇게 2개 방법으로 이미지를 테스트 할 수 있습니다. 
 - - -
 References)  
 [1] Raphael Chaula, "[A simple image test in React](https://dev.to/raphaelchaula/a-simple-image-test-in-react-3p6f)" [dev.to, 2021 Jan.] | Accessed: 2022-11-08  

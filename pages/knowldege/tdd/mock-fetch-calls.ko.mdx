@@ -2,10 +2,10 @@
 ## Ⅰ. 모킹하는 이유?
 유닛 테스트는 '**언제 실행되든 늘 같은 결과를 낸다**'라는 원칙이 있습니다.  
 하지만 api 호출 같은 경우는 외부 환경에 의존하기에 이 원칙이 위배될 수 있습니다.  
-이외에도 api 호출을 모킹하는 이유는
-- 유료 외부서비스를 이용해사 테스트 마다 과금 발생
-- 모든 api 응답을 테스트할 수 없어서
-- 테스트 자체가 느려지기 때문에
+이외에 api 호출을 모킹하는 이유는
+- 외부서비스가 유료라서 테스트 마다 과금 발생
+- 모든 api 응답을 테스트 할 수 없어서
+- 테스트가 느려지기 때문에
 
 ## Ⅱ. 실 테스트 코드
 영화진흥위원회 api 호출 및 테스트 코드를 예시로 들어보겠습니다.
@@ -20,7 +20,7 @@ async function fetchBoxOffice(days) {
   return data;
 }
 ```
-이런 boxOffice를 fetch 해오는 코드를 테스트한다고 했을 때
+이런 일일 boxOffice를 fetch 해오는 코드를 테스트한다고 했을 때
 ### ⅱ. 테스트 코드
 ```js
 const MOCK_BOXOFFICE = [{"rank":"1", "movieName":"자백"} ,{"rank":"2", "movieName":"와칸다"}];
@@ -45,21 +45,21 @@ describe('fetchBoxOffice', () => {
 ```
 일단 가장 핵심적인 부분은 `mockFetch()` 입니다.  
 이 부분이 없다면 어제는 통과했지만 내일은 실패하는 테스트 코드가 될겁니다.  
-미래의 api 쿼리 결과값을 예측 하기란 불가능 하기 때문이죠. 
+영진위 미래의 api 쿼리 결과값을 항상 예측 하기란 불가능 하기 때문이죠.
 
 그렇기에 Jest로 하여금 **fetch 함수를 전역적으로 모킹**하게 해야하는 것이고.  
-그 부분이 바로 `global.fetch = jest.fn()` 입니다.
+그 부분이 바로 `global.fetch = jest.fn();` 입니다.
 
 결과적으로 `fetchBoxOffice`가 fetch를 호출하면,  
 모킹된 버전이 호출이 되어서 예측된 리턴 값을 받을 수 있습니다.
 
 ## Ⅲ. 모킹 시 장점
-보시다시피 실제 api 코드가 아닌 모킹된 코드가 호출이 되기 때문에 여러 테스트가 가능합니다.
+보시다시피 실제 api 코드가 아닌 모킹된 코드가 호출이 되기 때문에 다양한 테스트가 가능합니다.
 
 - `mockRejectedValue`: 거절된 async 모킹
 - `mockClear`: 호출을 리셋
 
-등등 다양한 함수는 [Jest offcial docs](https://jestjs.io/docs/mock-function-api#methods)에서 살펴볼 수 있습니다.
+등등 가능한 함수는 [Jest offcial docs](https://jestjs.io/docs/mock-function-api#methods)에서 살펴볼 수 있습니다.
 - - -
 References)  
 [1] Fernando Ferreira, "[How to mock fetch calls with jest](https://medium.com/fernandodof/how-to-mock-fetch-calls-with-jest-a666ae1e7752)" [Medium, 2021 Feb.] | Accessed: 2022-11-08  
