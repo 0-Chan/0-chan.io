@@ -1,0 +1,87 @@
+# 시행착오
+import Callout from 'nextra-theme-docs/callout'
+
+`import` 문에서 테스트가 깨지는 경우가 **두 가지** 있었다.  
+하나 하나 살펴보고 원인과 해결법을 작성 해보았다.
+
+## A1. 문제
+util 함수와 그 테스트 파일들을 새로운 디렉토리로 옮겨 관리 하고자 했었다.  
+분명 문제 없이 테스트를 통과했었던 파일인데 말이다.ㅜㅜ  
+<Callout type="error" emoji="🚫">
+   FAIL  src/utils/foo.test.js  
+  ● foo › returns foo function result value  
+
+    TypeError: (0 , foo.default) is not a function
+</Callout>
+
+그런데 위와 같은 메세지와 함께 테스트가 깨지는 현상이 있었다.
+
+## B1. 원인
+디렉토리를 옮기며 바꾼 `export default`가 원인이었다.  
+`default` 문구가 제거되면서 **`import` 문을 적절히 바꾸지 않았기** 때문이었다.
+
+## C1. 해결
+`default`가 빠지면서 더이상 기본값 내보내기가 아니게 되었는데.  
+간단히 `import` 문에 중괄호를 추가하여 문제를 해결하였다.
+
+
+```js
+// foo.test.js
+// 수정 전
+import foo from './foo.js';
+
+// 수정 후
+import { foo } from './foo.js';
+
+. . .
+```
+
+- - -
+
+## A2. 문제
+비슷하게 이미지를 import 할 때 발생하던 문제다.  
+
+<Callout type="error" emoji="🚫">
+  FAIL  src/pages/NotFoundPage.test.jsx  
+  ● Test suite failed to run  
+
+    Jest encountered an unexpected token  
+
+    Jest failed to parse a file.
+</Callout>
+이 때는 위와 같은 에러 메시지가 떴다.
+
+## B2. 원인
+Jest가 import된 이미지 파일을 읽어들이다 발생하는 문제였다.  
+이미지 파일은 binary code를 JS 형식으로 읽는 바람에 에러가 발생한다.
+
+## C2. 해결
+Jest가 import된 이미지를 만나면 모킹된 파일을 읽도록 하는 것이 해결책이다.
+
+먼저 `__mocks__` 경로에 `fileMock.js` 라는 파일을 만들어준다.
+```js
+// fileMock.js
+export default '';
+```
+내용은 딱 이것만 적어준 다음에
+
+이미지를 만날 경우 `fileMock.js`를 읽도록 하기 위해  
+`jest.config.js`에 해당 설정을 추가한다.
+
+```js
+// jest.config.js
+module.exports = {
+  moduleNameMapper: {
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '__mocks__/fileMock.js',
+    '\\.(css|less)$': '__mocks__/styleMock.js',
+  },
+};
+```
+
+이렇게 하면 적혀있는 확장자를 만났을 경우 모킹된 파일로 연결하여  
+테스트 중 에러가 뜨는 걸 해결할 수 있었다!
+- - -
+발생일: 2023.01.02  
+키워드: TypeError, is not a function, failed to parse file, image, mock, css
+

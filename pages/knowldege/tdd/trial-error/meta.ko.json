@@ -1,3 +1,4 @@
 {
-  "wrong-test-env": "wrong test env"
+  "wrong-test-env": "wrong test env",
+  "import-breaks-tests": "import 문에서 깨질 때"
 }
