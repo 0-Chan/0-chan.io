@@ -4,9 +4,10 @@ import Callout from 'nextra-theme-docs/callout'
 `import` 문에서 테스트가 깨지는 경우가 **두 가지** 있었다.  
 하나 하나 살펴보고 원인과 해결법을 작성 해보았다.
 
-## A1. 문제
+## Ⅰ. export/import를 잘 처리하자
+### A. 문제
 util 함수와 그 테스트 파일들을 새로운 디렉토리로 옮겨 관리 하고자 했었다.  
-분명 문제 없이 테스트를 통과했었던 파일인데 말이다.ㅜㅜ  
+분명 문제 없이 테스트를 통과했었던 파일이었는데...  
 <Callout type="error" emoji="🚫">
    FAIL  src/utils/foo.test.js  
   ● foo › returns foo function result value  
@@ -16,11 +17,11 @@ util 함수와 그 테스트 파일들을 새로운 디렉토리로 옮겨 관�
 
 그런데 위와 같은 메세지와 함께 테스트가 깨지는 현상이 있었다.
 
-## B1. 원인
+### B. 원인
 디렉토리를 옮기며 바꾼 `export default`가 원인이었다.  
 `default` 문구가 제거되면서 **`import` 문을 적절히 바꾸지 않았기** 때문이었다.
 
-## C1. 해결
+### C. 해결
 `default`가 빠지면서 더이상 기본값 내보내기가 아니게 되었는데.  
 간단히 `import` 문에 중괄호를 추가하여 문제를 해결하였다.
 
@@ -38,7 +39,8 @@ import { foo } from './foo.js';
 
 - - -
 
-## A2. 문제
+## Ⅱ. 이미지를 import 할 때는
+### A. 문제
 비슷하게 이미지를 import 할 때 발생하던 문제다.  
 
 <Callout type="error" emoji="🚫">
@@ -51,11 +53,11 @@ import { foo } from './foo.js';
 </Callout>
 이 때는 위와 같은 에러 메시지가 떴다.
 
-## B2. 원인
+### B. 원인
 Jest가 import된 이미지 파일을 읽어들이다 발생하는 문제였다.  
 이미지 파일은 binary code를 JS 형식으로 읽는 바람에 에러가 발생한다.
 
-## C2. 해결
+### C. 해결
 Jest가 import된 이미지를 만나면 모킹된 파일을 읽도록 하는 것이 해결책이다.
 
 먼저 `__mocks__` 경로에 `fileMock.js` 라는 파일을 만들어준다.
@@ -85,3 +87,8 @@ module.exports = {
 발생일: 2023.01.02  
 키워드: TypeError, is not a function, failed to parse file, image, mock, css
 
+- - -
+References)  
+[1] Bhojendra Rauniyar, "[is not a function: What's causing it?](https://stackoverflow.com/questions/53106797/uncaught-typeerror-0-o-default-is-not-a-function-whats-causing-it
+)" [StackOverflow, 2018 Nov.] | Accessed: 2022-12-31  
+[2] 김나정, "[image를 import하면 생기는 test error](https://bananajeong.tistory.com/145)" [Tistory, 2021 Apr.] | Accessed: 2022-12-31  
