@@ -30,11 +30,11 @@ const FEATURES_WITH_TRANSLATIONS = {
     lightweight: "HTML5 / CSS3",
     realtime: "ES6+ JavaScript",
     suspense: "React",
-    pagination: "Next.js",
+    pagination: "Emotion",
     backendAgnostic: "TailwindCSS",
     renderingStrategies: "Jest",
     typescript: "Redux",
-    remoteLocal: "Emotion",
+    remoteLocal: "aws",
   },
 };
 
