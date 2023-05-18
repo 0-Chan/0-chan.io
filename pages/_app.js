@@ -1,13 +1,7 @@
-import { Analytics } from '@vercel/analytics/react';
 import "../styles.css";
 import "nextra-theme-docs/style.css";
 
 export default function Nextra({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);
-  return getLayout(
-    <>
-      <Component {...pageProps} />;
-      <Analytics />
-    </>
-  );
+  return getLayout(<Component {...pageProps} />);
 }
