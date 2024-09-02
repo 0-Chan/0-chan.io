@@ -3,19 +3,13 @@
 </h2>
 
 ### Tech Stack
-- [Nextra](https://nextra.vercel.app)
-  - Next.js
-  - [MDX](https://mdxjs.com)
 
+- [Gatsby v5](https://www.gatsbyjs.com/gatsby-5/)
 - [pnpm](https://pnpm.io)
 
 ## Script
+
 ```bash
 $ pnpm install
 $ pnpm dev
 ```
-
-- Deployed via Vercel
----
-
-Created by [@shuding](https://github.com/shuding) and [@pacocoursey](https://github.com/pacocoursey) at [Vercel](https://vercel.com). Released under the MIT license.

@@ -1,32 +1,39 @@
 {
-  "name": "0-chan-dev-blog",
+  "name": "0-chan.io",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "0-chan.io",
+  "author": "0-Chan",
+  "keywords": [
+    "gatsby"
+  ],
   "scripts": {
-    "dev": "next",
-    "debug": "NODE_OPTIONS='--inspect' next",
-    "start": "next start",
-    "build": "next build"
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
   },
-  "author": "Shu Ding",
-  "license": "MIT",
   "dependencies": {
-    "@reach/skip-nav": "^0.16.0",
-    "@vercel/analytics": "^1.0.1",
-    "focus-visible": "^5.1.0",
-    "intersection-observer": "^0.10.0",
-    "markdown-to-jsx": "^6.11.4",
-    "next": "^12.2.0",
-    "nextra": "^2.0.0-beta.6",
-    "nextra-theme-docs": "2.0.0-beta.6",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-intersection-observer": "^8.26.2"
+    "autoprefixer": "^10.4.20",
+    "gatsby": "^5.13.7",
+    "gatsby-plugin-image": "^3.13.1",
+    "gatsby-plugin-postcss": "^6.13.1",
+    "gatsby-plugin-sharp": "^5.13.1",
+    "gatsby-plugin-sitemap": "^6.13.1",
+    "gatsby-source-contentful": "^8.13.2",
+    "gatsby-source-filesystem": "^5.13.1",
+    "gatsby-transformer-sharp": "^5.13.1",
+    "postcss": "^8.4.43",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.4.10"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.5",
-    "tailwindcss": "^3.0.16"
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "typescript": "^5.3.3"
   }
 }
